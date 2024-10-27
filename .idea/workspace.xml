@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5a157e05-b8f8-4c17-95b4-16c28978d8f4" name="변경" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/API-Gateway">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/CEO">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/Employee">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/Eureka">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/Finance">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/config-server">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="API-Gateway" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Eureka" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2nxwLr8cZOuuNwwpotU1ZdjFDxm" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.API-Gateway [:ApiGatewayApplication.main()].executor": "Run",
+    "Gradle.CEO [:CeoApplication.main()].executor": "Run",
+    "Gradle.Employee [:EmployeeApplication.main()].executor": "Run",
+    "Gradle.Eureka [:EurekaApplication.main()].executor": "Run",
+    "Gradle.Eureka 빌드.executor": "Run",
+    "Gradle.Finance [:FinanceApplication.main()].executor": "Run",
+    "Gradle.config-server [:ConfigServerApplication.main()].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/FISA-BE/config-server",
+    "project.structure.last.edited": "모듈",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "애플리케이션.ApiGatewayApplication.executor": "Run",
+    "애플리케이션.EurekaApplication.executor": "Run"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\FISA-BE\Finance\src\main\resources" />
+      <recent name="D:\FISA-BE\CEO\src\main\resources" />
+      <recent name="D:\FISA-BE\Employee\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="애플리케이션.ApiGatewayApplication">
+    <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.API_Gateway.ApiGatewayApplication" />
+      <module name="API-Gateway.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.API_Gateway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConfigServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.config_server.ConfigServerApplication" />
+      <module name="config-server.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.config_server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmployeeApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.Employee.EmployeeApplication" />
+      <module name="Employee.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Employee.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.Eureka.EurekaApplication" />
+      <module name="Eureka.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Eureka.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FinanceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.Finance.FinanceApplication" />
+      <module name="Finance.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Finance.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="애플리케이션.ApiGatewayApplication" />
+        <item itemvalue="애플리케이션.EmployeeApplication" />
+        <item itemvalue="애플리케이션.ConfigServerApplication" />
+        <item itemvalue="애플리케이션.EurekaApplication" />
+        <item itemvalue="애플리케이션.FinanceApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="5a157e05-b8f8-4c17-95b4-16c28978d8f4" name="변경" comment="" />
+      <created>1729927991299</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729927991299</updated>
+    </task>
+    <servers />
+  </component>
+</project>
