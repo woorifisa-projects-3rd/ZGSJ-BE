@@ -1,4 +1,4 @@
-package com.example.CEO;
+package com.example.User;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

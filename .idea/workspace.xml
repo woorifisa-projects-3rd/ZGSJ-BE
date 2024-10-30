@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a157e05-b8f8-4c17-95b4-16c28978d8f4" name="변경" comment="" />
+    <list default="true" id="5a157e05-b8f8-4c17-95b4-16c28978d8f4" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API-Gateway/src/test/java/com/example/API_Gateway/ApiGatewayApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/API-Gateway/src/test/java/com/example/API_Gateway/ApiGatewayApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEO/src/main/java/com/example/CEO/CEOControllerForTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/CEO/src/main/java/com/example/User/CEOControllerForTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEO/src/main/java/com/example/CEO/CeoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/CEO/src/main/java/com/example/User/CeoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEO/src/main/java/com/example/CEO/TestwithEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/CEO/src/main/java/com/example/User/TestwithEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEO/src/test/java/com/example/CEO/CeoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/CEO/src/test/java/com/example/User/CeoApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/example/Employee/EmployeeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/example/Attendance/EmployeeApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/example/Employee/EmployeeTestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/example/Attendance/EmployeeTestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/example/Employee/FeignwithFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/example/Attendance/FeignwithFinance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/test/java/com/example/Employee/EmployeeApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/test/java/com/example/Attendance/EmployeeApplicationTests.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +31,9 @@
     <projectState path="$PROJECT_DIR$/API-Gateway">
       <ProjectState />
     </projectState>
+    <projectState path="$PROJECT_DIR$/Attendance">
+      <ProjectState />
+    </projectState>
     <projectState path="$PROJECT_DIR$/CEO">
       <ProjectState />
     </projectState>
@@ -27,6 +44,9 @@
       <ProjectState />
     </projectState>
     <projectState path="$PROJECT_DIR$/Finance">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/User">
       <ProjectState />
     </projectState>
     <projectState path="$PROJECT_DIR$/config-server">
@@ -62,11 +82,29 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "jihyuk0414"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/woorifisa-projects-3rd/first-team-MSA-BE.git",
+    "accountId": "b69aa2be-2cf6-4a41-ae2e-117d331c1adf"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2nxwLr8cZOuuNwwpotU1ZdjFDxm" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -74,31 +112,44 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.API-Gateway [:ApiGatewayApplication.main()].executor": "Run",
+    "Gradle.API-Gateway [:com.example.API_Gateway.ApiGatewayApplication.main()].executor": "Run",
+    "Gradle.API-Gateway 빌드.executor": "Run",
+    "Gradle.Attendance [:com.example.Attendance.AttendanceApplication.main()].executor": "Run",
+    "Gradle.Attendance 빌드.executor": "Run",
     "Gradle.CEO [:CeoApplication.main()].executor": "Run",
     "Gradle.Employee [:EmployeeApplication.main()].executor": "Run",
     "Gradle.Eureka [:EurekaApplication.main()].executor": "Run",
+    "Gradle.Eureka [:com.example.Eureka.EurekaApplication.main()].executor": "Run",
     "Gradle.Eureka 빌드.executor": "Run",
     "Gradle.Finance [:FinanceApplication.main()].executor": "Run",
+    "Gradle.Finance 빌드.executor": "Run",
+    "Gradle.User [:com.example.User.UserApplication.main()].executor": "Run",
+    "Gradle.User 빌드.executor": "Run",
     "Gradle.config-server [:ConfigServerApplication.main()].executor": "Run",
+    "Gradle.config-server [:com.example.config_server.ConfigServerApplication.main()].executor": "Run",
+    "Gradle.config-server 빌드.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/FISA-BE/config-server",
+    "last_opened_file_path": "C:/Users/3-30/first-team-MSA-BE-final/Attendance",
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
     "애플리케이션.ApiGatewayApplication.executor": "Run",
+    "애플리케이션.AttendanceApplication.executor": "Run",
     "애플리케이션.EurekaApplication.executor": "Run"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\3-30\first-team-MSA-BE-final" />
       <recent name="D:\FISA-BE\Finance\src\main\resources" />
       <recent name="D:\FISA-BE\CEO\src\main\resources" />
       <recent name="D:\FISA-BE\Employee\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.ApiGatewayApplication">
+  <component name="RunManager" selected="애플리케이션.AttendanceApplication">
     <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.API_Gateway.ApiGatewayApplication" />
       <module name="API-Gateway.main" />
@@ -112,12 +163,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConfigServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.config_server.ConfigServerApplication" />
-      <module name="config-server.main" />
+    <configuration name="AttendanceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Attendance.AttendanceApplication" />
+      <module name="Attendance.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.config_server.*" />
+          <option name="PATTERN" value="com.example.Attendance.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -126,11 +179,10 @@
       </method>
     </configuration>
     <configuration name="EmployeeApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.Employee.EmployeeApplication" />
-      <module name="Employee.main" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Attendance.EmployeeApplication" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.Employee.*" />
+          <option name="PATTERN" value="com.example.Attendance.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -151,12 +203,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FinanceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.Finance.FinanceApplication" />
-      <module name="Finance.main" />
+    <configuration name="UserApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.User.UserApplication" />
+      <module name="User.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.Finance.*" />
+          <option name="PATTERN" value="com.example.User.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -164,13 +216,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="애플리케이션.ApiGatewayApplication" />
+      <item itemvalue="애플리케이션.AttendanceApplication" />
+      <item itemvalue="애플리케이션.EmployeeApplication" />
+      <item itemvalue="애플리케이션.EurekaApplication" />
+      <item itemvalue="애플리케이션.UserApplication" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="애플리케이션.AttendanceApplication" />
+        <item itemvalue="애플리케이션.EurekaApplication" />
+        <item itemvalue="애플리케이션.UserApplication" />
         <item itemvalue="애플리케이션.ApiGatewayApplication" />
         <item itemvalue="애플리케이션.EmployeeApplication" />
-        <item itemvalue="애플리케이션.ConfigServerApplication" />
-        <item itemvalue="애플리케이션.EurekaApplication" />
-        <item itemvalue="애플리케이션.FinanceApplication" />
       </list>
     </recent_temporary>
   </component>

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Slf4j
 @RequiredArgsConstructor
-public class CEOControllerForTest {
+public class UserControllerForTest {
 
     private final TestwithEmployee testwithEmployee;
 
