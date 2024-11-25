@@ -46,9 +46,10 @@ tasks.named('test') {
 }
 
 bootJar {
-	enabled = false
+	enabled = true
+	archiveClassifier.set('')
 }
 
 jar {
-	enabled = true
+	enabled = false
 }
