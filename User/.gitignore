@@ -33,6 +33,11 @@ out/
 /nbdist/
 /.nb-gradle/
 
+
+build/
+*.jar
+!gradle/wrapper/gradle-wrapper.jarㄴ
+
 ### VS Code ###
 .vscode/
 
