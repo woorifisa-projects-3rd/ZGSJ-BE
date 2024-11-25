@@ -1,12 +1,10 @@
-FROM gradle:7.6.1-jdk17-alpine AS builder
+FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
-COPY . .
-RUN gradle clean build -x test --no-daemon
+COPY build/libs/Finance-0.0.1-SNAPSHOT.jar app.jar
 
-# Run stage
-FROM openjdk:17-slim
-WORKDIR /app
-COPY --from=builder /app/build/libs/*.jar app.jar
+RUN rm -rf /var/cache/* && \
+   rm -rf /tmp/* && \
+   rm -rf /var/cache/apk/*
 
 EXPOSE 8080
 ENTRYPOINT ["java", "-Xms256m", "-Xmx1024m", "-jar", "app.jar"]
