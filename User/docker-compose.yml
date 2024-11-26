@@ -5,6 +5,7 @@ services:
     # redis 설정 유지
     container_name: redis_User
     image: redis
+    hostname: redis
     ports:
       - "6379:6379"
     volumes:
