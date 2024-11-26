@@ -1,8 +1,6 @@
-.git
-.gitignore
-.gradle
-.idea
-build
+# 모든 파일과 폴더를 제외하고
+*
+*/*
+
+# build/libs의 jar만 포함
 !build/libs/*.jar
-*.md
-src/test/

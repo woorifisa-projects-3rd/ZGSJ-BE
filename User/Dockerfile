@@ -1,12 +1,11 @@
-FROM gradle:7.6.1-jdk17-alpine AS builder
-WORKDIR /app
-COPY . .
-RUN gradle clean build -x test --no-daemon
-
 # Run stage
-FROM openjdk:17-slim
+FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
-COPY --from=builder /app/build/libs/*.jar app.jar
+COPY build/libs/User-0.0.1-SNAPSHOT.jar app.jar
 
-EXPOSE 8080
+RUN rm -rf /var/cache/* && \
+   rm -rf /tmp/* && \
+   rm -rf /var/cache/apk/*
+
+EXPOSE 7070
 ENTRYPOINT ["java", "-Xms256m", "-Xmx1024m", "-jar", "app.jar"]

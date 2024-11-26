@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  redis:
+    # redis 설정 유지
+    container_name: redis_User
+    image: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data:/data  #rdb에 영구 저장
+    restart: always
+    networks:
+      - spring-net
+    healthcheck: # Redis 헬스체크 추가 핑 검사
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    container_name: User
+    build: .  # Dockerfile이 있는 현재 디렉토리를 사용
+    ports:
+      - "7070:7070"
+
+    environment:
+      EMAIL_PASSWORD: lfyywzrymhinrbug
+      EMAIL_USERNAME: j525252p
+      MAP_API_KEY: AIzaSyD85M6vyeKk6hnsbSRILhMT2Clco7mC9sYAIzaSyD85M6vyeKk6hnsbSRILhMT2Clco7mC9sY
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - spring-net
+    restart: always
+
+networks:
+  spring-net:
+    driver: bridge
