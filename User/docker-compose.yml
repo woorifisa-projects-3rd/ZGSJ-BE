@@ -21,14 +21,10 @@ services:
 
   app:
     container_name: User
+    image: msa/user:latest
     build: .  # Dockerfile이 있는 현재 디렉토리를 사용
     ports:
       - "7070:7070"
-
-    environment:
-      EMAIL_PASSWORD: lfyywzrymhinrbug
-      EMAIL_USERNAME: j525252p
-      MAP_API_KEY: AIzaSyD85M6vyeKk6hnsbSRILhMT2Clco7mC9sYAIzaSyD85M6vyeKk6hnsbSRILhMT2Clco7mC9sY
     depends_on:
       redis:
         condition: service_healthy

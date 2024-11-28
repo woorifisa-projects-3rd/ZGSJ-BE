@@ -38,6 +38,7 @@ public class FinanceController {
             @RequestParam Integer year,
             @RequestParam Integer month)
     {
+        log.info("chart요청닿았음");
         TransactionHistoryRequest transactionHistoryRequest= TransactionHistoryRequest.from(userFeign.getStoreAccountInfo(storeid));
 
         return ResponseEntity.ok(
