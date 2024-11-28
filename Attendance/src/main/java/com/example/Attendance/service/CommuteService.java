@@ -6,6 +6,7 @@ import com.example.Attendance.dto.CommuteMonthlyResponse;
 import com.example.Attendance.error.CustomException;
 import com.example.Attendance.error.ErrorCode;
 import com.example.Attendance.model.Commute;
+import com.example.Attendance.model.President;
 import com.example.Attendance.model.StoreEmployee;
 import com.example.Attendance.repository.CommuteRepository;
 import com.example.Attendance.repository.StoreEmployeeRepository;
@@ -27,17 +28,26 @@ public class CommuteService {
 
     private final CommuteRepository commuteRepository;
     private final StoreEmployeeRepository storeEmployeeRepository;
+    private final NotificationService notificationService;
 
     @Transactional
     public boolean goToWork(StoreEmployee storeEmployee){
         Optional<Commute> lastCommute= commuteRepository.findTopByStoreEmployeeIdOrderByStartTimeDesc(storeEmployee.getId());
         LocalDateTime now= LocalDateTime.now();
         Commute commute= Commute.createCommuteCheckIn(now.toLocalDate(),now,storeEmployee);
+
+        President president = storeEmployee.getStore().getPresident();
+
         if(lastCommute.isPresent() &&lastCommute.get().getEndTime()==null){
             commuteRepository.save(commute);
             return false;
         }
         commuteRepository.save(commute);
+
+        notificationService.sendNotification(
+                president.getId(),
+                String.format("%s님이 출근하셨습니다.", storeEmployee.getName())
+        );
         return true;
     }
 
@@ -50,6 +60,13 @@ public class CommuteService {
             throw new CustomException(ErrorCode.MISSING_GO_TO_WORK_RECODE);
         }
         commute.setEndTime(LocalDateTime.now());
+
+        President president = storeEmployee.getStore().getPresident();
+
+        notificationService.sendNotification(
+                president.getId(),
+                String.format("%s님이 퇴근하셨습니다.", storeEmployee.getName())
+        );
     }
 
     @Transactional
