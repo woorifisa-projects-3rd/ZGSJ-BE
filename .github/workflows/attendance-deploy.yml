@@ -88,10 +88,17 @@ jobs:
       #      - name: Docker Hub에 push
       #        run: docker push ${{secrets.DOCKER_USERNAME}}/attendance:latest
 
+
+
       - name: 현재 Task Definition 가져오기
         run: |
           aws ecs describe-task-definition --task-definition attendance \
           --query taskDefinition > task-definition.json
+
+      - name: Task Definition 출력 확인
+        run: |
+          echo "Generated task definition: ${{ steps.task-def.outputs.task-definition }}"
+          cat ${{ steps.task-def.outputs.task-definition }}
 
       - name: 새 이미지로 Task Definition 업데이트
         id: task-def
