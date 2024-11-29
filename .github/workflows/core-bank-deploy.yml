@@ -25,28 +25,28 @@ jobs:
           git sparse-checkout init --cone
           git sparse-checkout set core-bank
 
-#
-#      - name: Cache JDK 17
-#        uses: actions/cache@v3
-#        with:
-#          path: ~/.cache/sdkman/candidates
-#          key: ${{ runner.os }}-jdk-17-${{ hashFiles('**/build.gradle') }}
-#          restore-keys: |
-#            ${{ runner.os }}-jdk-17-
-#
-#      - name: jdk 17버전 설치
-#        uses: actions/setup-java@v4
-#        with:
-#          distribution: temurin
-#          java-version: 17
-#
-#      - name: gradlew에 실행 권한 부여하기
-#        working-directory: ./core-bank  # 실행 위치를 core-bank 폴더로 지정
-#        run: chmod +x ./gradlew
-#
-#      - name: 빌드 진행
-#        working-directory: ./core-bank
-#        run: ./gradlew clean bootJar -x test
+
+      - name: Cache JDK 17
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/sdkman/candidates
+          key: ${{ runner.os }}-jdk-17-${{ hashFiles('**/build.gradle') }}
+          restore-keys: |
+            ${{ runner.os }}-jdk-17-
+
+      - name: jdk 17버전 설치
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: gradlew에 실행 권한 부여하기
+        working-directory: ./core-bank  # 실행 위치를 core-bank 폴더로 지정
+        run: chmod +x ./gradlew
+
+      - name: 빌드 진행
+        working-directory: ./core-bank
+        run: ./gradlew clean bootJar -x test
 
       - name: AWS Resource에 접근할 수 있게 AWS credentials 설정
         uses: aws-actions/configure-aws-credentials@v4
@@ -72,8 +72,8 @@ jobs:
           file: ./core-bank/Dockerfile
           push: true
           tags: ${{secrets.DOCKER_USERNAME}}/banking:latest
-#          cache-from: type=gha
-#          cache-to: type=gha,mode=max
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: ssh로 ec2 접속
         uses: appleboy/ssh-action@v1.0.3
