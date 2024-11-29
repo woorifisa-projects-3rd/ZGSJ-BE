@@ -97,7 +97,7 @@ jobs:
         with:
           task-definition: task-definition.json
           container-name: finance
-          image: ${{secrets.DOCKER_USERNAME}}/msa/attendance:${{ github.sha }}
+          image: ${{secrets.DOCKER_USERNAME}}/msa/finance:${{ github.sha }}
 
       - name: ECS Task Definition 업데이트
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
