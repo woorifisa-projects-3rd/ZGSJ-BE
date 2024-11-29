@@ -88,6 +88,12 @@ jobs:
       #      - name: Docker Hub에 push
       #        run: docker push ${{secrets.DOCKER_USERNAME}}/attendance:latest
 
+      - name: AWS Resource에 접근할 수 있게 AWS credentials 설정
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ap-northeast-2  # ECR Public은 us-east-1이지만, ECS는 ap-northeast-2에 있으므로 이 리전으로 변경
+          aws-access-key-id: ${{secrets.AWS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_ACCESS_KEY}}
 
 
       - name: 현재 Task Definition 가져오기
