@@ -69,6 +69,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./core-bank
+          file: ./core-bank/Dockerfile
           push: true
           tags: ${{secrets.DOCKER_USERNAME}}/banking:latest
           cache-from: type=gha
