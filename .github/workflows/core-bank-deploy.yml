@@ -58,6 +58,9 @@ jobs:
       - name: ECR에 로그인하기
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
+        with:
+          registry-type: public
+#          registry: public.ecr.aws
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -67,7 +70,7 @@ jobs:
         with:
           context: ./core-bank
           push: true
-          tags: public.ecr.aws/v9v1s1r8/banking:latest
+          tags: ${{secrets.DOCKER_USERNAME}}/banking:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
