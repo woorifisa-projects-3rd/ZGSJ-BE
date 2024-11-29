@@ -79,13 +79,13 @@ jobs:
         run: |
           aws ecr-public describe-images \
             --repository-name banking \
-            --registry-alias v9v1s1r8 \
             --region us-east-1 \
+            --registry-id ${{ secrets.DOCKER_USERNAME }} \
             --query 'imageDetails[*].imageDigest' \
             --output text | tr '\t' '\n' | while read digest; do
               aws ecr-public batch-delete-image \
                 --repository-name banking \
-                --registry-alias v9v1s1r8 \
+                --registry-id ${{ secrets.DOCKER_USERNAME }} \
                 --region us-east-1 \
                 --image-ids imageDigest=$digest
           done
