@@ -82,6 +82,12 @@ jobs:
           key: ${{secrets.EC2_SSH_KEY}}           # .pem 파일
           script_stop: true
           script: |
+            echo "DB_URL=jdbc:mysql://banking.cd6422ciue8j.ap-northeast-2.rds.amazonaws.com:3306/banking" > /home/ec2-user/banking.env
+            echo "DB_USERNAME=bankapp" >> /home/ec2-user/banking.env
+            echo "DB_PASSWORD=asas1212!" >> /home/ec2-user/banking.env
+            echo "EMAIL_PASSWORD=lfyywzrymhinrbug" >> /home/ec2-user/banking.env
+            echo "EMAIL_USERNAME=j525252p" >> /home/ec2-user/banking.env
+            
             docker system prune -f
             docker image prune -a -f
             docker volume prune -f
@@ -90,11 +96,4 @@ jobs:
             docker rm banking || true
             docker pull ${{secrets.DOCKER_USERNAME}}/banking:latest
             
-            docker run -d --name banking \
-            -e "DB_URL=jdbc:mysql://banking.cd6422ciue8j.ap-northeast-2.rds.amazonaws.com:3306/banking" \
-            -e "DB_USERNAME=bankapp" \
-            -e "DB_PASSWORD=asas1212!" \
-            -e "EMAIL_PASSWORD=lfyywzrymhinrbug" \
-            -e "EMAIL_USERNAME=j525252p" \
-            -p 3030:3030 \
-            ${{secrets.DOCKER_USERNAME}}/banking:latest
+            docker run -d --name banking --env-file /home/ec2-user/banking.env -p 3030:3030 ${{secrets.DOCKER_USERNAME}}/banking:latest
