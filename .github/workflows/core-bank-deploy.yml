@@ -71,7 +71,9 @@ jobs:
           context: ./core-bank
           file: ./core-bank/Dockerfile
           push: true
-          tags: ${{secrets.DOCKER_USERNAME}}/banking:latest
+#          tags: ${{secrets.DOCKER_USERNAME}}/banking:latest
+
+          tags: public.ecr.aws/v9v1s1r8/banking:latest
 #          cache-from: type=gha
 #          cache-to: type=gha,mode=max
 
