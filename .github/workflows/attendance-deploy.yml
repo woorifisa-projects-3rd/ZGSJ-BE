@@ -120,7 +120,7 @@ jobs:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
           service: attendance-service    # ECS 서비스 이름
           cluster: ClusterMSA    # ECS 클러스터 이름
-          wait-for-service-stability: true
+          wait-for-service-stability: false
 
 #      - name: ssh로 ec2 접속
 #        uses: appleboy/ssh-action@v1.0.3
