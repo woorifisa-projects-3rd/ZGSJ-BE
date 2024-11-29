@@ -76,24 +76,30 @@ jobs:
 
       - name: ssh로 ec2 접속
         uses: appleboy/ssh-action@v1.0.3
+        env:
+          DB_URL: ${{ secrets.BANK_DB_URL }}
+          DB_USERNAME: ${{ secrets.BANK_DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.BANK_DB_PASSWORD }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
         with:
           host: ${{secrets.BANKING_HOST}}             # 퍼블릭 ip
           username: ${{secrets.EC2_USERNAME}}     # ec2-user
           key: ${{secrets.EC2_SSH_KEY}}           # .pem 파일
+          envs: DB_URL,DB_USERNAME,DB_PASSWORD,EMAIL_PASSWORD,EMAIL_USERNAME
           script_stop: true
+
           script: |
-            echo "DB_URL=jdbc:mysql://banking.cd6422ciue8j.ap-northeast-2.rds.amazonaws.com:3306/banking" > /home/ec2-user/banking.env
-            echo "DB_USERNAME=bankapp" >> /home/ec2-user/banking.env
-            echo "DB_PASSWORD=asas1212!" >> /home/ec2-user/banking.env
-            echo "EMAIL_PASSWORD=lfyywzrymhinrbug" >> /home/ec2-user/banking.env
-            echo "EMAIL_USERNAME=j525252p" >> /home/ec2-user/banking.env
+            echo "DB_URL=$DB_URL" > /home/ec2-user/banking.env
+            echo "DB_USERNAME=$DB_USERNAME" >> /home/ec2-user/banking.env
+            echo "DB_PASSWORD=$DB_PASSWORD" >> /home/ec2-user/banking.env
+            echo "EMAIL_PASSWORD=$EMAIL_PASSWORD" >> /home/ec2-user/banking.env
+            echo "EMAIL_USERNAME=$EMAIL_USERNAME" >> /home/ec2-user/banking.env
             
             docker system prune -f
             docker image prune -a -f
             docker volume prune -f
-            
             docker stop banking || true
             docker rm banking || true
             docker pull ${{secrets.DOCKER_USERNAME}}/banking:latest
-            
             docker run -d --name banking --env-file /home/ec2-user/banking.env -p 3030:3030 ${{secrets.DOCKER_USERNAME}}/banking:latest
