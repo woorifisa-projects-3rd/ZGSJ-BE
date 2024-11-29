@@ -76,19 +76,11 @@ jobs:
 
       - name: ssh로 ec2 접속
         uses: appleboy/ssh-action@v1.0.3
-        env:
-          DB_URL: ${{ secrets.BANK_DB_URL }}
-          DB_USERNAME: ${{ secrets.BANK_DB_USERNAME }}
-          DB_PASSWORD: ${{ secrets.BANK_DB_PASSWORD }}
-          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-          EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
         with:
           host: ${{secrets.BANKING_HOST}}             # 퍼블릭 ip
           username: ${{secrets.EC2_USERNAME}}     # ec2-user
           key: ${{secrets.EC2_SSH_KEY}}           # .pem 파일
-          envs: DB_URL,DB_USERNAME,DB_PASSWORD,EMAIL_PASSWORD,EMAIL_USERNAME
           script_stop: true
-
           script: |
 
             docker system prune -f
@@ -97,10 +89,11 @@ jobs:
             docker stop banking || true
             docker rm banking || true
             docker pull ${{secrets.DOCKER_USERNAME}}/banking:latest 
-            docker run -d --name banking \
-            -e DB_URL=$DB_URL \
-            -e DB_USERNAME=$DB_USERNAME \
-            -e DB_PASSWORD=$DB_PASSWORD \
-            -e EMAIL_PASSWORD=$EMAIL_PASSWORD \
-            -e EMAIL_USERNAME=$EMAIL_USERNAME \
-            -p 3030:3030 ${{secrets.DOCKER_USERNAME}}/banking:latest
+            
+            docker run -d --name banking -p 3030:3030 \
+            -e DB_URL=${{secrets.BANK_DB_URL}} \
+            -e DB_USERNAME=${{secrets.BANK_DB_USERNAME}} \
+            -e DB_PASSWORD=${{secrets.BANK_DB_PASSWORD}} \
+            -e EMAIL_PASSWORD=${{secrets.EMAIL_PASSWORD}} \
+            -e EMAIL_USERNAME=${{secrets.EMAIL_USERNAME}} \
+            ${{secrets.DOCKER_USERNAME}}/banking:latest
