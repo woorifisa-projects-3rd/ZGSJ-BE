@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @Component
-@FeignClient(name = "core",url= "http://localhost:3030/bank")
+@FeignClient(name = "core",url= "http://3.39.182.226:3456")
 public interface FeignWithCoreBank {
 
     @PostMapping("/automaticTransfer")

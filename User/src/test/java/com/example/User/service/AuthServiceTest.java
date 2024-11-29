@@ -1,6 +1,7 @@
 package com.example.User.service;
 
 
+import com.example.User.repository.PresidentRepository;
 import com.example.User.util.JWTUtil;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,6 +28,9 @@ public class AuthServiceTest {
     @Mock
     private RedisTokenService tokenService;
 
+    @Mock
+    private PresidentRepository presidentRepository;
+
     @InjectMocks
     private AuthService authService;
 
@@ -44,9 +48,9 @@ public class AuthServiceTest {
         when(jwtUtil.generateToken(userId, 1000)).thenReturn(mockRefreshToken);
 
         // When
-        String resultAccessToken = authService.onAuthenticationSuccess(userId);
-        log.info(resultAccessToken);
-        assertThat(resultAccessToken).isEqualTo(mockAccessToken);
+        String[] result = authService.onAuthenticationSuccess(userId);
+        log.info(result[0]);
+        assertThat(result[0]).isEqualTo(mockAccessToken);
         // Then
         verify(jwtUtil).generateToken(userId, 100);
         verify(jwtUtil).generateToken(userId, 1000);
