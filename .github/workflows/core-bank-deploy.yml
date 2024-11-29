@@ -72,22 +72,23 @@ jobs:
           file: ./core-bank/Dockerfile
           push: true
           tags: ${{secrets.DOCKER_USERNAME}}/banking:${{ github.sha }}
+          platforms: linux/amd64
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
       - name: Cleanup old images
         run: |
-            # 최근 3개 이미지 목록 가져오기 및 삭제
-            aws ecr-public list-images \
-              --repository-name banking \
-              --region us-east-1 \
-              --query 'imageIds[?imageTag!=`${{ github.sha }}`]' \
-              --output json | jq -r '.[:3] | .[] | .imageDigest' | while read digest; do
-                aws ecr-public batch-delete-image \
-                  --repository-name banking \
-                  --region us-east-1 \
-                  --image-ids imageDigest=$digest
-              done || true
+          # 현재 이미지를 제외한 모든 이미지 삭제
+          aws ecr-public describe-images \
+            --repository-name banking \
+            --region us-east-1 \
+            --query 'imageDetails[?!contains(imageTags[],`${{ github.sha }}`)].imageDigest' \
+            --output text | tr '\t' '\n' | while read digest; do
+              aws ecr-public batch-delete-image \
+                --repository-name banking \
+                --region us-east-1 \
+                --image-ids imageDigest=$digest
+          done || true
 
       - name: ssh로 ec2 접속
         uses: appleboy/ssh-action@v1.0.3
