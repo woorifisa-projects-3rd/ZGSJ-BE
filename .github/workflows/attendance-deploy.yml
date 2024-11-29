@@ -50,7 +50,7 @@ jobs:
       - name: AWS Resource에 접근할 수 있게 AWS credentials 설정
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-region: ap-northeast-2
+          aws-region: us-east-1
           aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY }}
 
@@ -59,6 +59,7 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
         with:
           registry-type: public
+
 
 #      - name: Docker Hub에 로그인하기
 #        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
