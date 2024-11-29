@@ -2,6 +2,7 @@ name: core-bank-deploy To EC2
 
 on:
   pull_request:
+#    types: [closed]
     branches: ["deploy_test"]
     paths:
       - "core-bank/**"
@@ -13,6 +14,7 @@ permissions:
 
 jobs:
   deploy-core-bank:
+#    if: github.event.pull_request.merged == true
     runs-on: ubuntu-22.04
     steps:
       - name: Github Repository 파일 불러오기
