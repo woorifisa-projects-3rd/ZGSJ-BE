@@ -36,14 +36,10 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Check directory contents
-        run: |
-          pwd
-          ls -la
-          ls -la ./core-bank
-
       - name: gradlew에 실행 권한 부여하기
-        run: chmod +x ./core-bank/gradlew
+        run: | 
+          cd core-bank
+          chmod +x ./gradlew
 
       - name: 빌드 진행
         run: ./gradlew clean bootJar -x test
