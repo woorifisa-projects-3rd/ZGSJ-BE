@@ -90,4 +90,11 @@ jobs:
             docker rm banking || true
             docker pull ${{secrets.DOCKER_USERNAME}}/banking:latest
             
-            docker run -d --name banking -e DB_URL=jdbc:mysql://banking.cd6422ciue8j.ap-northeast-2.rds.amazonaws.com:3306/banking -e DB_USERNAME=bankapp -e DB_PASSWORD=asas1212! -e EMAIL_PASSWORD=lfyywzrymhinrbug -e EMAIL_USERNAME=j525252p -p 3030:3030 ${{secrets.DOCKER_USERNAME}}/banking:latest
+            docker run -d --name banking \
+            -e "DB_URL=jdbc:mysql://banking.cd6422ciue8j.ap-northeast-2.rds.amazonaws.com:3306/banking" \
+            -e "DB_USERNAME=bankapp" \
+            -e "DB_PASSWORD=asas1212!" \
+            -e "EMAIL_PASSWORD=lfyywzrymhinrbug" \
+            -e "EMAIL_USERNAME=j525252p" \
+            -p 3030:3030 \
+            ${{secrets.DOCKER_USERNAME}}/banking:latest
