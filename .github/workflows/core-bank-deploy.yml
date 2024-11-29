@@ -2,7 +2,7 @@ name: core-bank-deploy To EC2
 
 on:
   pull_request:
-    branches: ["deploy"]
+    branches: ["deploy_test"]
     paths:
       - "core-bank/**"
 
@@ -35,6 +35,12 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
+
+      - name: Check directory contents
+        run: |
+          pwd
+          ls -la
+          ls -la ./core-bank
 
       - name: gradlew에 실행 권한 부여하기
         run: chmod +x ./core-bank/gradlew
