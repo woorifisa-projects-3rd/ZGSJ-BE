@@ -62,8 +62,8 @@ jobs:
           registry-type: public
 #          registry: public.ecr.aws
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+#      - name: Set up Docker Buildx
+#        uses: docker/setup-buildx-action@v3
 
       - name: Build with cache
         uses: docker/build-push-action@v5
