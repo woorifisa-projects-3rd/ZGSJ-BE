@@ -71,24 +71,13 @@ jobs:
           context: ./core-bank
           file: ./core-bank/Dockerfile
           push: true
-          tags: ${{secrets.DOCKER_USERNAME}}/banking:latest
+          tags: ${{secrets.DOCKER_USERNAME}}/banking:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Delete old images from ECR
-        run: |
-          aws ecr-public describe-images \
-            --repository-name banking \
-            --region us-east-1 \
-            --registry-id ${{ secrets.DOCKER_USERNAME }} \
-            --query 'imageDetails[*].imageDigest' \
-            --output text | tr '\t' '\n' | while read digest; do
-              aws ecr-public batch-delete-image \
-                --repository-name banking \
-                --registry-id ${{ secrets.DOCKER_USERNAME }} \
-                --region us-east-1 \
-                --image-ids imageDigest=$digest
-          done
+#      - name: Delete old images from ECR
+#        run: |
+#          aws ecr batch-delete-image --profile ${{ secrets.IAM_PROFILE_USERNAME }} --repository-name hellodeveloper --image-ids imageTag=latest
 
       - name: ssh로 ec2 접속
         uses: appleboy/ssh-action@v1.0.3
@@ -104,7 +93,7 @@ jobs:
             docker volume prune -f
             docker stop banking || true
             docker rm banking || true
-            docker pull ${{secrets.DOCKER_USERNAME}}/banking:latest 
+            docker pull ${{secrets.DOCKER_USERNAME}}/banking:${{ github.sha }} 
             
             docker run -d --name banking -p 3030:3030 \
             -e DB_URL=${{secrets.BANK_DB_URL}} \
@@ -112,4 +101,4 @@ jobs:
             -e DB_PASSWORD=${{secrets.BANK_DB_PASSWORD}} \
             -e EMAIL_PASSWORD=${{secrets.EMAIL_PASSWORD}} \
             -e EMAIL_USERNAME=${{secrets.EMAIL_USERNAME}} \
-            ${{secrets.DOCKER_USERNAME}}/banking:latest
+            ${{secrets.DOCKER_USERNAME}}/banking:${{ github.sha }}
