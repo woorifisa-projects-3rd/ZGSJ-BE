@@ -75,9 +75,19 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-#      - name: Delete old images from ECR
-#        run: |
-#          aws ecr batch-delete-image --profile ${{ secrets.IAM_PROFILE_USERNAME }} --repository-name hellodeveloper --image-ids imageTag=latest
+      - name: Cleanup old images
+        run: |
+            # 최근 3개 이미지 목록 가져오기 및 삭제
+            aws ecr-public list-images \
+              --repository-name banking \
+              --region us-east-1 \
+              --query 'imageIds[?imageTag!=`${{ github.sha }}`]' \
+              --output json | jq -r '.[:3] | .[] | .imageDigest' | while read digest; do
+                aws ecr-public batch-delete-image \
+                  --repository-name banking \
+                  --region us-east-1 \
+                  --image-ids imageDigest=$digest
+              done || true
 
       - name: ssh로 ec2 접속
         uses: appleboy/ssh-action@v1.0.3
