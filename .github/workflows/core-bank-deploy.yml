@@ -90,16 +90,17 @@ jobs:
           script_stop: true
 
           script: |
-            echo "DB_URL=$DB_URL" > /home/ec2-user/banking.env
-            echo "DB_USERNAME=$DB_USERNAME" >> /home/ec2-user/banking.env
-            echo "DB_PASSWORD=$DB_PASSWORD" >> /home/ec2-user/banking.env
-            echo "EMAIL_PASSWORD=$EMAIL_PASSWORD" >> /home/ec2-user/banking.env
-            echo "EMAIL_USERNAME=$EMAIL_USERNAME" >> /home/ec2-user/banking.env
-            
+
             docker system prune -f
             docker image prune -a -f
             docker volume prune -f
             docker stop banking || true
             docker rm banking || true
-            docker pull ${{secrets.DOCKER_USERNAME}}/banking:latest
-            docker run -d --name banking --env-file /home/ec2-user/banking.env -p 3030:3030 ${{secrets.DOCKER_USERNAME}}/banking:latest
+            docker pull ${{secrets.DOCKER_USERNAME}}/banking:latest 
+            docker run -d --name banking \
+            -e DB_URL=$DB_URL \
+            -e DB_USERNAME=$DB_USERNAME \
+            -e DB_PASSWORD=$DB_PASSWORD \
+            -e EMAIL_PASSWORD=$EMAIL_PASSWORD \
+            -e EMAIL_USERNAME=$EMAIL_USERNAME \
+            -p 3030:3030 ${{secrets.DOCKER_USERNAME}}/banking:latest
