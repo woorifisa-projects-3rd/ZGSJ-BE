@@ -60,7 +60,6 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
         with:
           registry-type: public
-#          registry: public.ecr.aws
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -72,23 +71,8 @@ jobs:
           file: ./core-bank/Dockerfile
           push: true
           tags: ${{secrets.DOCKER_USERNAME}}/banking:${{ github.sha }}
-          platforms: linux/amd64
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-      - name: Cleanup old images
-        run: |
-          # 현재 이미지를 제외한 모든 이미지 삭제
-          aws ecr-public describe-images \
-            --repository-name banking \
-            --region us-east-1 \
-            --query 'imageDetails[?!contains(imageTags[],`${{ github.sha }}`)].imageDigest' \
-            --output text | tr '\t' '\n' | while read digest; do
-              aws ecr-public batch-delete-image \
-                --repository-name banking \
-                --region us-east-1 \
-                --image-ids imageDigest=$digest
-          done || true
 
       - name: ssh로 ec2 접속
         uses: appleboy/ssh-action@v1.0.3
