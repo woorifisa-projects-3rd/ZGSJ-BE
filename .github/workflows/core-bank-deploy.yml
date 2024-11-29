@@ -91,10 +91,18 @@ jobs:
             docker rm banking || true
             docker pull ${{secrets.DOCKER_USERNAME}}/banking:latest 
             
-            docker run -d --name banking -p 3030:3030 \
-            -e DB_URL=${{secrets.BANK_DB_URL}} \
-            -e DB_USERNAME=${{secrets.BANK_DB_USERNAME}} \
-            -e DB_PASSWORD=${{secrets.BANK_DB_PASSWORD}} \
-            -e EMAIL_PASSWORD=${{secrets.EMAIL_PASSWORD}} \
-            -e EMAIL_USERNAME=${{secrets.EMAIL_USERNAME}} \
-            ${{secrets.DOCKER_USERNAME}}/banking:latest
+#            docker run -d --name banking -p 3030:3030 \
+#            -e DB_URL=${{secrets.BANK_DB_URL}} \
+#            -e DB_USERNAME=${{secrets.BANK_DB_USERNAME}} \
+#            -e DB_PASSWORD=${{secrets.BANK_DB_PASSWORD}} \
+#            -e EMAIL_PASSWORD=${{secrets.EMAIL_PASSWORD}} \
+#            -e EMAIL_USERNAME=${{secrets.EMAIL_USERNAME}} \
+#            ${{secrets.DOCKER_USERNAME}}/banking:latest
+            docker run -d --name banking \
+            -e DB_URL=jdbc:mysql://banking.cd6422ciue8j.ap-northeast-2.rds.amazonaws.com:3306/banking \
+            -e DB_USERNAME=bankapp \
+            -e DB_PASSWORD=asas1212! \
+            -e EMAIL_PASSWORD=lfyywzrymhinrbug \
+            -e EMAIL_USERNAME=j525252p \
+            -p 3030:3030 \
+            public.ecr.aws/v9v1s1r8/banking:latest
