@@ -75,7 +75,7 @@ jobs:
           context: ./Attendance
           file: ./Attendance/Dockerfile
           push: true
-          tags: ${{ steps.login-ecr.outputs.registry }}/msa/attendance:${{ github.sha }}   # latest 말고 ${{ github.sha }} 이것도 가능
+          tags: ${{secrets.DOCKER_USERNAME}}/msa/attendance:${{ github.sha }}   # latest 말고 ${{ github.sha }} 이것도 가능
           cache-from: type=gha             # GitHub Actions의 저장된 캐시에서 읽어옴
           cache-to: type=gha,mode=max      # GitHub Actions의 캐시 저장소에 저장
       #        위와 동일 but 캐시 미사용
@@ -99,7 +99,7 @@ jobs:
         with:
           task-definition: task-definition.json
           container-name: attendance
-          image: ${{ steps.login-ecr.outputs.registry }}/msa/attendance:${{ github.sha }}
+          image: ${{secrets.DOCKER_USERNAME}}/msa/attendance:${{ github.sha }}
 
       - name: ECS Task Definition 업데이트
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
