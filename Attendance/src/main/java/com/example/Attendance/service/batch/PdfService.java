@@ -8,14 +8,24 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.xhtmlrenderer.pdf.ITextRenderer;
-
+import org.springframework.core.io.Resource;
+import org.springframework.beans.factory.annotation.Value;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;  // 추가
+import org.apache.commons.io.IOUtils;  // 추가
 
 @Service
 @Slf4j
 public class PdfService {
 
-    //그대로 사용하지 않고, Extends로 사용.
+    @Value("classpath:fonts/NanumGothic-Regular.ttf")
+    private Resource regularFont;
+
+    @Value("classpath:fonts/NanumGothic-Bold.ttf")
+    private Resource boldFont;
+
+    @Value("classpath:fonts/NanumGothic-ExtraBold.ttf")
+    private Resource extraBoldFont;
 
     public byte[] convertHtmlToPdf(String html) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -23,12 +33,29 @@ public class PdfService {
         try {
             ITextRenderer renderer = new ITextRenderer();
 
+            String regularFontPath = regularFont.getURI().getPath();
+            String boldFontPath = boldFont.getURI().getPath();
+            String extraBoldFontPath = extraBoldFont.getURI().getPath();
+
             // 폰트 설정
-            ClassPathResource regular = new ClassPathResource("fonts/NanumGothic-Regular.ttf");
             renderer.getFontResolver().addFont(
-                    regular.getFile().getAbsolutePath(),
+                    regularFontPath,
                     BaseFont.IDENTITY_H,
-                    BaseFont.EMBEDDED
+                    BaseFont.EMBEDDED,
+                    "NanumGothic"
+            );
+            renderer.getFontResolver().addFont(
+                    boldFontPath,
+                    BaseFont.IDENTITY_H,
+                    BaseFont.EMBEDDED,
+                    "NanumGothicBold"
+            );
+
+            renderer.getFontResolver().addFont(
+                    extraBoldFontPath,
+                    BaseFont.IDENTITY_H,
+                    BaseFont.EMBEDDED,
+                    "NanumGothicExtraBold"
             );
 
             // HTML 설정
