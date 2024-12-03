@@ -3,7 +3,7 @@ name: attendance-deploy To EC2
 on: # action 실행될 트리거
   pull_request:
 #    types: [closed]
-    branches: ["deploy"]
+    branches: ["d_t"]
     paths:
       - "Attendance/**"
 
