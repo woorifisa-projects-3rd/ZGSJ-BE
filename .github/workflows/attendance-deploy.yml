@@ -2,7 +2,7 @@ name: attendance-deploy To EC2
 
 on: # action 실행될 트리거
   pull_request:
-    types: [closed]
+#    types: [closed]
     branches: ["deploy"]
     paths:
       - "Attendance/**"
@@ -14,7 +14,7 @@ permissions:  #권한 부여
 
 jobs:
   deploy-attendance:
-    if: github.event.pull_request.merged == true
+#    if: github.event.pull_request.merged == true
     runs-on: ubuntu-22.04   #스텝이 적용될 운영체제
     steps:
       - name: Github Repository 파일 불러오기  #스텝 설명
