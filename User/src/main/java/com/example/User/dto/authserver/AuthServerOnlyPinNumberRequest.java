@@ -6,8 +6,6 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Getter
-public class AuthServerEmailPinNumberRequest {
-    private String emailPinNumber;
-    private String email;
-
+public class AuthServerOnlyPinNumberRequest {
+    private String pinNumber;
 }
