@@ -21,10 +21,14 @@ public class VerificationNumberStorage {
     }
 
     public boolean verifyNumber(AuthServerEmailPinNumberRequest req) {
-        NumberEntry entry = storage.remove(req.getEmail());
-        if (entry != null && entry.isValid()) {
-            return entry.getNumber().equals(req.getEmailPinNumber());
-        }
+        NumberEntry entry = storage.get(req.getEmail());
+
+        if (entry != null) {
+            if (entry.getNumber().equals(req.getEmailPinNumber())){
+                storage.remove(req.getEmail());
+                return entry.isValid();
+                }
+            }
         return false;
     }
 }
