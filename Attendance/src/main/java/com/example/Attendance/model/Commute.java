@@ -23,17 +23,21 @@ public class Commute {
     private Integer id;
 
     @Column(name = "commute_date", nullable = false, columnDefinition = "DATE")
+    @Temporal(TemporalType.DATE)
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private LocalDate commuteDate;
+
 
     @Column(name = "commute_duration")
     private Long commuteDuration;
 
     @Column(name = "start_time", nullable = false, columnDefinition = "TIMESTAMP")
+    @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime startTime;
 
     @Column(name = "end_time", columnDefinition = "TIMESTAMP")
+    @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime endTime;
 
