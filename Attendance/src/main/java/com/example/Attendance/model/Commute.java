@@ -1,5 +1,6 @@
 package com.example.Attendance.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,16 +22,19 @@ public class Commute {
     @Column(name = "commute_id")
     private Integer id;
 
-    @Column(name = "commute_date", nullable = false)
+    @Column(name = "commute_date", nullable = false, columnDefinition = "DATE")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private LocalDate commuteDate;
 
     @Column(name = "commute_duration")
     private Long commuteDuration;
 
-    @Column(name = "start_time", nullable = false)
+    @Column(name = "start_time", nullable = false, columnDefinition = "TIMESTAMP")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime startTime;
 
-    @Column(name = "end_time")
+    @Column(name = "end_time", columnDefinition = "TIMESTAMP")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime endTime;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
@@ -33,10 +34,14 @@ public class CommuteService {
     @Transactional
     public boolean goToWork(StoreEmployee storeEmployee){
         Optional<Commute> lastCommute= commuteRepository.findTopByStoreEmployeeIdOrderByStartTimeDesc(storeEmployee.getId());
-        LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
-        LocalDate commuteDate = now.toLocalDate();
+
+        ZonedDateTime seoulTime = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
+        LocalDateTime now = seoulTime.toLocalDateTime();
+        LocalDate commuteDate = seoulTime.toLocalDate();
 
         log.info("현재 시간은 "+ now);
+        log.info("출근 날짜는 "+ commuteDate);
+
         Commute commute= Commute.createCommuteCheckIn(commuteDate,now,storeEmployee);
         if(lastCommute.isPresent() &&lastCommute.get().getEndTime()==null){
             commuteRepository.save(commute);
@@ -51,10 +56,16 @@ public class CommuteService {
         Commute commute= commuteRepository
                 .findTopByStoreEmployeeIdOrderByStartTimeDesc(storeEmployee.getId())
                 .orElseThrow(()-> new CustomException(ErrorCode.INVALID_COMMUTE));
+
+        log.info("퇴근 전 출근 날짜: " + commute.getCommuteDate());
+        log.info("퇴근 전 출근 시간: " + commute.getStartTime());
+
         if(commute.getEndTime()!=null){
             throw new CustomException(ErrorCode.MISSING_GO_TO_WORK_RECODE);
         }
         commute.setEndTime(LocalDateTime.now(ZoneId.of("Asia/Seoul")));
+
+        log.info("퇴근 후 출근 날짜: " + commute.getCommuteDate());
     }
 
     @Transactional
