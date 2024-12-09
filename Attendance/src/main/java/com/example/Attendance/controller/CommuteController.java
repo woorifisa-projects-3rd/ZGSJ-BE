@@ -43,6 +43,7 @@ public class CommuteController {
     public ResponseEntity<String> addDailyCommuteByPresident(
             @RequestParam int seid, @Valid @RequestBody CommuteByPresidentRequest request)
     {
+        log.info("추가 요청 날짜 : {}", request.getCommuteDate());
         commuteService.addDailyCommuteByPresident(request, seid);
         return ResponseEntity.ok("직원 출 퇴근 사장님이 추가 성공");
     }
@@ -51,6 +52,7 @@ public class CommuteController {
     public ResponseEntity<String> updateDailyCommuteByPresident(
             @RequestParam int commuteid, @Valid @RequestBody CommuteByPresidentRequest request)
     {
+        log.info("변경 요청 날짜 : {}", request.getCommuteDate());
         commuteService.updateDailyCommuteByPresident(request, commuteid);
         return ResponseEntity.ok("직원 출 퇴근 사장님이 수정 성공");
     }
