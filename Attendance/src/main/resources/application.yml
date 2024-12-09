@@ -10,7 +10,7 @@ spring:
   application:
     name: Attendance
   datasource:
-    url: jdbc:mysql://${DB_URL}
+    url: jdbc:mysql://${DB_URL}?serverTimezone=Asia/Seoul&useUnicode=true&characterEncoding=utf8
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
