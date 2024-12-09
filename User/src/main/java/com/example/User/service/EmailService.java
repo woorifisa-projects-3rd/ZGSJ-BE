@@ -38,7 +38,6 @@ public class EmailService {
     }
 
     public String sendURLToEmail(String email, Integer storeId,String encryptedEmail) {  // 리턴 타입을 void로 변경
-//        String ip="http://localhost:3000";
         String deployIp= "https://jg-sajang.vercel.app";
         String url = String.format("%s/employee/%d/commute/%s",deployIp, storeId, encryptedEmail);
         String title ="[집계사장]직원 URL";
