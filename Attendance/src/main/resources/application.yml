@@ -10,7 +10,7 @@ spring:
   application:
     name: Attendance
   datasource:
-    url: jdbc:mysql://${DB_URL}?serverTimezone=Asia/Seoul  # 여기에 serverTimezone 추가
+    url: jdbc:mysql://${DB_URL}?serverTimezone=Asia/Seoul&useLegacyDatetimeCode=false&cacheDefaultTimezone=false
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
