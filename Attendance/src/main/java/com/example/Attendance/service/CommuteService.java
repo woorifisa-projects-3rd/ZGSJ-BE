@@ -76,7 +76,7 @@ public class CommuteService {
                 calculateDuration(request.getStartTime(), request.getEndTime());
 
         commuteRepository.updateCommute(request.getStartTime(), request.getEndTime(),
-                request.getCommuteDate().toLocalDate(), commuteDuration, commuteId);
+                request.getCommuteDate(), commuteDuration, commuteId);
     }
 
     private long calculateDuration(LocalDateTime startTime, LocalDateTime endTime) {
