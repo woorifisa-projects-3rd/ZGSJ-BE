@@ -35,7 +35,7 @@ public class CommuteByPresidentRequest {
     public Commute toEntity(StoreEmployee employee) {
         // endTime 유무에 따라 다른 생성 메서드 호출
         return endTime == null ?
-                Commute.createCommuteCheckIn(commuteDate, startTime, employee) :
+                Commute.createCommuteCheckIn(startTime, employee) :
                 Commute.createCompleteCommute(commuteDate, startTime, endTime, employee);
     }
 }
