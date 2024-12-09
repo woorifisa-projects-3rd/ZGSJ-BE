@@ -34,6 +34,8 @@ public class CommuteService {
     public boolean goToWork(StoreEmployee storeEmployee){
         Optional<Commute> lastCommute= commuteRepository.findTopByStoreEmployeeIdOrderByStartTimeDesc(storeEmployee.getId());
         LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
+
+        log.info("현재 시간은 "+ now);
         Commute commute= Commute.createCommuteCheckIn(now.toLocalDate(),now,storeEmployee);
         if(lastCommute.isPresent() &&lastCommute.get().getEndTime()==null){
             commuteRepository.save(commute);
