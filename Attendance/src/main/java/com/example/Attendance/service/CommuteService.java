@@ -40,9 +40,9 @@ public class CommuteService {
         LocalDate commuteDate = seoulTime.toLocalDate();
 
         log.info("현재 시간은 "+ now);
-        log.info("출근 날짜는 "+ commuteDate);
+        log.info("출근 날짜는 "+ now.toLocalDate());
 
-        Commute commute= Commute.createCommuteCheckIn(commuteDate,now,storeEmployee);
+        Commute commute= Commute.createCommuteCheckIn(now,storeEmployee);
         if(lastCommute.isPresent() &&lastCommute.get().getEndTime()==null){
             commuteRepository.save(commute);
             return false;

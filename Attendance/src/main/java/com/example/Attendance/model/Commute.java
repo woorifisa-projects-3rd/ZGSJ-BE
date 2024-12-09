@@ -45,8 +45,8 @@ public class Commute {
     @JoinColumn(name = "se_id")
     private StoreEmployee storeEmployee;
 
-    private Commute(LocalDate commuteDate, LocalDateTime startTime, StoreEmployee storeEmployee) {
-        this.commuteDate = commuteDate;
+    private Commute(LocalDateTime startTime, StoreEmployee storeEmployee) {
+        this.commuteDate = startTime.toLocalDate();
         this.commuteDuration = 0L;
         this.startTime = startTime;
         this.storeEmployee = storeEmployee;
@@ -62,8 +62,8 @@ public class Commute {
     }
 
 
-    public static Commute createCommuteCheckIn(LocalDate commuteDate, LocalDateTime startTime, StoreEmployee storeEmployee) {
-        return new Commute(commuteDate, startTime, storeEmployee);
+    public static Commute createCommuteCheckIn(LocalDateTime startTime, StoreEmployee storeEmployee) {
+        return new Commute(startTime, storeEmployee);
     }
 
     public static Commute createCompleteCommute(LocalDate commuteDate, LocalDateTime startTime, LocalDateTime endTime, StoreEmployee storeEmployee) {
