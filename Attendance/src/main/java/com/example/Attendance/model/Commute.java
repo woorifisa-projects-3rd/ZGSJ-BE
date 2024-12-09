@@ -3,6 +3,7 @@ package com.example.Attendance.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -15,6 +16,7 @@ import java.time.temporal.ChronoUnit;
 @Table(name = "commute")
 @Getter
 @NoArgsConstructor
+@Slf4j
 public class Commute {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +40,8 @@ public class Commute {
     private StoreEmployee storeEmployee;
 
     private Commute(LocalDate commuteDate, LocalDateTime startTime, StoreEmployee storeEmployee) {
-        this.commuteDate = commuteDate;
+        this.commuteDate = startTime.toLocalDate();
+        log.info("변환값 : {} ", startTime.toLocalDate());
         this.commuteDuration = 0L;
         this.startTime = startTime;
         this.storeEmployee = storeEmployee;
@@ -46,7 +49,8 @@ public class Commute {
 
     //사장님이 출퇴근 모두 지정 용
     private Commute(LocalDate commuteDate, LocalDateTime startTime, LocalDateTime endTime, StoreEmployee storeEmployee) {
-        this.commuteDate = commuteDate;
+        log.info("사장님 지정 요청 변환값 : {} ", startTime.toLocalDate());
+        this.commuteDate = startTime.toLocalDate();
         this.startTime = startTime;
         this.endTime = endTime;
         calculateDuration(startTime, endTime);

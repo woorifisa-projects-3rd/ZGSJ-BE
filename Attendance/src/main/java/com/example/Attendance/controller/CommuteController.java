@@ -36,6 +36,7 @@ public class CommuteController {
             @RequestParam int storeid,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate commutedate
     ) {
+        log.info("조회 요청 날짜 : {}", commutedate);
         return ResponseEntity.ok(commuteService.getDailyCommuteList(storeid, commutedate));
     }
 
