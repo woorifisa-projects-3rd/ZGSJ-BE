@@ -42,6 +42,7 @@ public class StoreEmployeeController {
     public ResponseEntity<Void> leaveWork(@RequestBody EmployeeCommuteRequest commuteRequest){
         StoreEmployee storeEmployee=storeEmployeeService.findStoreEmployeeByEmailAndStoreId(commuteRequest.getStoreId(),commuteRequest,commuteRequest.getEmail());
         commuteService.leaveWork(storeEmployee);
+
         return ResponseEntity.ok().build();
     }
 
