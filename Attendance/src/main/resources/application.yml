@@ -10,17 +10,19 @@ spring:
   application:
     name: Attendance
   datasource:
-    url: jdbc:mysql://${DB_URL}
+    url: jdbc:mysql://${DB_URL}?serverTimezone=Asia/Seoul  # 여기에 serverTimezone 추가
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: none
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
-        format_sql: true    # SQL 보기 좋게 포맷팅
+        format_sql: false   # SQL 보기 좋게 포맷팅
+        jdbc:
+          time_zone: Asia/Seoul  # 여기에 Hibernate 시간대 설정 추가
   cloud:
     gcp:
       enabled: true
@@ -33,5 +35,3 @@ spring:
       table-prefix: BATCH_
     job:
       enabled: false
-
-
