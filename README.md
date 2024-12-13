@@ -83,6 +83,7 @@ BaaS 기반 임베디드 금융 서비스입니다.
 <br>
 
 ## 🦀 프로젝트 구조
+### 배포 이전 구조
 ```tree
 ├── .github
 │   └── workflows
@@ -94,7 +95,7 @@ BaaS 기반 임베디드 금융 서비스입니다.
 ├── config-server
 ├── core-bank
 
-- 배포 이전 구조
+
 
 ```tree
 ├── .github
