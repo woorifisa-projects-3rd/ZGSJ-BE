@@ -5,14 +5,18 @@ import com.example.User.error.CustomException;
 import com.example.User.error.ErrorCode;
 import com.example.User.util.CryptoUtil;
 import jakarta.mail.MessagingException;
+import jakarta.mail.SendFailedException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.eclipse.angus.mail.smtp.SMTPAddressFailedException;
+import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
+import java.util.Arrays;
 
 @Service
 @Slf4j
@@ -22,7 +26,7 @@ public class EmailService {
     private final JavaMailSender javaMailSender;
     private final CryptoUtil cryptoUtil;
     public String sendPinNumberToEmail(String email){
-        String title ="[집계사장]직원 PinNumber";
+        String title ="[집계사장]Email 확인 용 PinNumber";
         String pinNumber=cryptoUtil.makeRandomInteger();
         String content =
                 "집계사장을 사용해주셔서 감사합니다. 🦀🍔🍟" +
@@ -34,8 +38,8 @@ public class EmailService {
     }
 
     public String sendURLToEmail(String email, Integer storeId,String encryptedEmail) {  // 리턴 타입을 void로 변경
-        String ip="localhost";
-        String url = String.format("http://%s:3000/employee/%d/commute/%s",ip, storeId, encryptedEmail);
+        String deployIp= "https://jg-sajang.vercel.app";
+        String url = String.format("%s/employee/%d/commute/%s",deployIp, storeId, encryptedEmail);
         String title ="[집계사장]직원 URL";
         mailSend(email, title, createHTML(url));
         return url;
@@ -63,6 +67,14 @@ public class EmailService {
             helper.setSubject(title); // 이메일 주소 설정
             helper.setText(content, true); // 이메일의 내용
             javaMailSender.send(message);
+        } catch (MailSendException sme)
+        {
+            log.error("존재하지 않는 이메일 : {}" ,toMail);
+            throw new CustomException(ErrorCode.NOT_EXISTS_EMAIL);
+        } catch (SendFailedException se)
+        {
+            log.error("메일 전송 실패: {}", se.getMessage());
+            throw new CustomException(ErrorCode.EMAIL_SEND_FAILED);
         } catch (MessagingException e) {
             log.error("이메일 전송 실패: {}", e.getMessage());
             throw new CustomException(ErrorCode.EMAIL_SEND_FAILED);

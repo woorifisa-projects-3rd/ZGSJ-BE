@@ -3,6 +3,7 @@ package com.example.Attendance.service;
 import com.example.Attendance.dto.CommuteByPresidentRequest;
 import com.example.Attendance.dto.CommuteDailyResponse;
 import com.example.Attendance.dto.CommuteMonthlyResponse;
+import com.example.Attendance.dto.batch.CommuteSummary;
 import com.example.Attendance.error.CustomException;
 import com.example.Attendance.error.ErrorCode;
 import com.example.Attendance.model.Commute;
@@ -32,6 +33,9 @@ public class CommuteService {
     public boolean goToWork(StoreEmployee storeEmployee){
         Optional<Commute> lastCommute= commuteRepository.findTopByStoreEmployeeIdOrderByStartTimeDesc(storeEmployee.getId());
         LocalDateTime now= LocalDateTime.now();
+
+        log.info("현재 시간", now);
+
         Commute commute= Commute.createCommuteCheckIn(now.toLocalDate(),now,storeEmployee);
         if(lastCommute.isPresent() &&lastCommute.get().getEndTime()==null){
             commuteRepository.save(commute);
@@ -46,6 +50,9 @@ public class CommuteService {
         Commute commute= commuteRepository
                 .findTopByStoreEmployeeIdOrderByStartTimeDesc(storeEmployee.getId())
                 .orElseThrow(()-> new CustomException(ErrorCode.INVALID_COMMUTE));
+
+        log.info("퇴근 시간", LocalDateTime.now());
+
         if(commute.getEndTime()!=null){
             throw new CustomException(ErrorCode.MISSING_GO_TO_WORK_RECODE);
         }
@@ -86,6 +93,14 @@ public class CommuteService {
         return commuteRepository.findMonthlyCommutesByStore(storeId,year,month)
                 .stream().map(CommuteMonthlyResponse::from).toList();
     }
+    public List<CommuteSummary> findAllByCommuteDateBetween(List<Integer> employeeIds,LocalDate date){
+        LocalDate startDate = date.minusMonths(1); // 지난 달의 오늘 날짜부터
+        LocalDate endDate = date.minusDays(1); // 오늘 날짜의 하루 전까지
+        // 오늘이 11월 13일이라면 10월 13일 ~ 11월 12일까지
+
+        // 출퇴근 데이터 조회
+        return commuteRepository.findAllByCommuteDateBetween(startDate, endDate, employeeIds);
+    }
 
     public List<CommuteDailyResponse> getDailyCommuteList(int storeid, LocalDate commuteDate) {
         return commuteRepository.findByStoreIdAndCommuteDate(storeid, commuteDate)
@@ -96,7 +111,7 @@ public class CommuteService {
 
                     // 여기 로직 바꿔야함
                     /////////////
-                    if (employee.getEmploymentType()== 0) {  //0이면시급
+                    if (employee.getEmploymentType()!= 1) {  //0이면시급
                         commuteAmount = Math.round((employee.getSalary() * commute.getCommuteDuration()) / 60.0);
                     } else {  //1(true)면 월급
                         commuteAmount = employee.getSalary();

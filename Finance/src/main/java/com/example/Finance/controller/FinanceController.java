@@ -38,6 +38,7 @@ public class FinanceController {
             @RequestParam Integer year,
             @RequestParam Integer month)
     {
+        log.info("chart요청닿았음");
         TransactionHistoryRequest transactionHistoryRequest= TransactionHistoryRequest.from(userFeign.getStoreAccountInfo(storeid));
 
         return ResponseEntity.ok(
@@ -82,13 +83,10 @@ public class FinanceController {
                 transactionHistoryResponseList, taxtype
         );
 
-        //전달.
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
-
         return new ResponseEntity<>(pdfContent, headers, HttpStatus.OK);
     }
-
 
 
 

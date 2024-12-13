@@ -5,6 +5,7 @@ import com.example.User.dto.login.ReqIdFindData;
 import com.example.User.dto.login.ReqPwChange;
 import com.example.User.dto.login.ResIdFindData;
 import com.example.User.dto.passwordemail.EmailRequest;
+import com.example.User.dto.response.ResponseDto;
 import com.example.User.model.President;
 import com.example.User.resolver.MasterId;
 import com.example.User.service.EmailService;
@@ -27,16 +28,22 @@ public class PresidentAccountController {
     @PostMapping("/check/email")
     public ResponseEntity<String> sendPinNumberToEmail(@RequestBody EmailOnlyRequest emailOnlyRequest) {
         log.info("email {}", emailOnlyRequest.getEmail());
+
+        // 여기에 이메일 존재 여부 판별 코드를 작성
+        presidentService.emialvalidation(emailOnlyRequest.getEmail());
+
         String pinNumber=emailService.sendPinNumberToEmail(emailOnlyRequest.getEmail());
         log.info("email send {}", pinNumber);
         return ResponseEntity.ok(pinNumber);
     }
 
     @PutMapping("/change-password")
-    public ResponseEntity<Void> changePassword(@MasterId Integer id,
+    public ResponseEntity<ResponseDto> changePassword(@MasterId Integer id,
                                                @Valid @RequestBody ReqPwChange reqpwChange) {
-        presidentService.changePassword(id, reqpwChange);
-        return ResponseEntity.ok().build();
+        boolean result = presidentService.changePassword(id, reqpwChange);
+        return result ?
+                ResponseEntity.ok().build()
+                : ResponseEntity.badRequest().body(ResponseDto.from("이전과 일치한 비밀번호입니다."));
     }
 
     @DeleteMapping("/secession")

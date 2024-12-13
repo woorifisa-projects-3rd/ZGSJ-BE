@@ -42,6 +42,11 @@ public class SecurityConfig {
         needIdUrls.add("/president/mypage");
         needIdUrls.add("/president/secession");
         needIdUrls.add("/user/account-check");
+        needIdUrls.add("/user/president/validate-password");
+        needIdUrls.add("/core/account/check");
+        needIdUrls.add("/president/termaccept");
+        needIdUrls.add("/core/account/certificate/pin");
+        needIdUrls.add("/user/manager/check");
 
         return new TokenCheckFilter(jwtUtil, permitUrls, needIdUrls, cryptoUtil);
     }

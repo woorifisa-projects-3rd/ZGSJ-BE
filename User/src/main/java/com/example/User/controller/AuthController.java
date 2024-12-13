@@ -3,11 +3,14 @@ package com.example.User.controller;
 import com.example.User.dto.login.ReqLoginData;
 import com.example.User.dto.login.ReqRegist;
 import com.example.User.dto.login.ResNewAccessToken;
+import com.example.User.dto.passwordemail.PassWordValidate;
+import com.example.User.dto.response.ResponseDto;
 import com.example.User.resolver.MasterId;
 import com.example.User.service.AuthService;
 import com.example.User.service.PresidentService;
 import com.example.User.service.RedisTokenService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -23,13 +26,32 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/login")
-    ResponseEntity<ResNewAccessToken> login( @RequestBody ReqLoginData reqLoginData) {
+    ResponseEntity<ResNewAccessToken> login(@RequestBody ReqLoginData reqLoginData, HttpServletRequest request) {
         log.info("reqLoginData: "+reqLoginData);
 
         Integer id= presidentService.validateLogin(reqLoginData);
-        String accessToken = authService.onAuthenticationSuccess(id);
+        String[] tokens = authService.onAuthenticationSuccess(id);
 
-        return ResponseEntity.ok(ResNewAccessToken.from(accessToken));
+
+//        ResponseCookie cookie1 = ResponseCookie.from("access_token", tokens[0])
+//                .path("/")
+//                .httpOnly(true)
+//                .maxAge(600)
+//                .sameSite("Lax")
+//                .build();
+//
+//        ResponseCookie cookie2 = ResponseCookie.from("refresh_token", tokens[1])
+//                .path("/")
+//                .httpOnly(true)
+//                .maxAge(36000)
+//                .sameSite("Lax")
+//                .build();
+//
+//        return ResponseEntity
+//                .ok()
+//                .header(HttpHeaders.SET_COOKIE, cookie1.toString(),cookie2.toString())
+//                .body(ResNewAccessToken.from(tokens[0]));
+        return ResponseEntity.ok(ResNewAccessToken.from(tokens[0]));
     }
 
     @GetMapping("/logout")
@@ -48,7 +70,16 @@ public class AuthController {
     @PostMapping("/regist")
     ResponseEntity<ResNewAccessToken> regist(@RequestBody ReqRegist reqRegist) {
         Integer id = presidentService.regist(reqRegist);
-        String accessToken = authService.onAuthenticationSuccess(id);
-        return ResponseEntity.ok(ResNewAccessToken.from(accessToken));
+//        String accessToken = authService.onAuthenticationSuccess(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/validate-password")
+    ResponseEntity<ResponseDto> validatePassword(
+            @MasterId Integer id,
+            @Valid @RequestBody PassWordValidate passWordValidate)
+    {
+        authService.validatePassword(id, passWordValidate.getPassword());
+        return ResponseEntity.ok(ResponseDto.from("비밀번호 검증 성공"));
     }
 }
