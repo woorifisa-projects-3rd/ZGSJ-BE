@@ -65,6 +65,10 @@ BaaS 기반 임베디드 금융 서비스입니다.
 - 해당 사업장의 운영자는 직원의 출,퇴근 내역을 수정, 삭제할 수 있습니다.
   ![image](https://github.com/user-attachments/assets/66228819-ae8f-4c57-84f6-549f4ea9cd4c)
 
+- 직원용 출 퇴근 url
+  ![image](https://github.com/user-attachments/assets/6f7b9770-2f67-4cf5-940b-c68bf887a169)
+
+
 
 ### 급여 계산, 자동 이체
 - 직원의 출, 퇴근 내역을 바탕으로 직원의 급여를 계산하게 됩니다.
