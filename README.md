@@ -63,10 +63,8 @@ BaaS 기반 임베디드 금융 서비스입니다.
 - 가게별 직원을 등록하고, 해당 직원의 출 퇴근 내역을 확인할 수 있습니다.
 - 카카오맵 API를 활용하여 별도의 출,퇴근 용 기기 설치 없이 원격 출,퇴근이 가능합니다.
 - 해당 사업장의 운영자는 직원의 출,퇴근 내역을 수정, 삭제할 수 있습니다.
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/66228819-ae8f-4c57-84f6-549f4ea9cd4c" width="45%" />
-  <img src="https://github.com/user-attachments/assets/6f7b9770-2f67-4cf5-940b-c68bf887a169" width="45%" />
-</div>
+  ![image](https://github.com/user-attachments/assets/66228819-ae8f-4c57-84f6-549f4ea9cd4c)
+
 
 
 
