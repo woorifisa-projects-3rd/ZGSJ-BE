@@ -56,7 +56,7 @@ BaaS 기반 임베디드 금융 서비스입니다.
  ![image](https://github.com/user-attachments/assets/d8812662-6881-4116-809e-f5a232516519)
 
 ### 원 클릭 급여 명세서, 간편 장부 발급 
-- 한번의 클릭만으로 가게의 해당 월 급여 명세서, 간편 장부를 발급받을 수 있습니다.
+- 한번의 클릭만으로 가게의 해당 월 손익 계산서, 간편 장부를 발급받을 수 있습니다.
 ![image](https://github.com/user-attachments/assets/f5bd0708-8ba8-46a5-ace1-1d279bc1db4c)
 
 ### 직원 출, 퇴근 관리
@@ -70,7 +70,8 @@ BaaS 기반 임베디드 금융 서비스입니다.
 - 직원의 출, 퇴근 내역을 바탕으로 직원의 급여를 계산하게 됩니다.
 - Spring Batch를 활용하여 급여, 주휴 수당 등의 계산이 포함 된 급여 자동 이체가 이루어집니다.
 - 자동 이체 진행 시 이에 대한 급여 명세서가 직원의 이메일로 발송되게 됩니다.
-  ![image](https://github.com/user-attachments/assets/520254b3-c107-4657-87f5-a1d9b4f8fdb3)
+  ![image](https://github.com/user-attachments/assets/c805dc0e-3850-47e0-928f-d70dcc8528b9)
+
 
 
 ### 컨테이너 오케스트레이션
@@ -142,47 +143,47 @@ BaaS 기반 임베디드 금융 서비스입니다.
    <td align="center">Default</td>
  </tr>
   <tr>
-  <td align="center">
-   <ul>
-       <li>MSA 플랫폼 구축</li>
-       <li>원 클릭 간편장부, 급여명세서 발급</li>
-       <li>ECS 활용 서버 배포</li>
-       <li>CDC 구축</li>
-       <li>급여 자동 이체 로직 고안</li>
-   </ul>
-  </td>
-  <td align="center">기여 부</td>
-  <td align="center">
-   <ul>
-       <li>프로젝트 기획</li>
-       <li>CORE BANKING 구축</li>
-       <li>외부 API 통신</li>
-   </ul>
-  </td>
-  <td align="center">
-   <ul>
-       <li>서비스 기획</li>
-       <li>매/지출 그래프 시각화</li>
-       <li>급여 자동 이체</li>
-       <li>사용자 인증 로직</li>
-   </ul>
-  </td>
-  <td align="center">
-   <ul>
-       <li>사용자 인증/인가</li>
-       <li>급여 자동 이체 총괄</li>
-       <li>자동 급여명세서 발급</li>
-       <li>BE CI/CD 파이프라인 구축</li>
-   </ul>
-  </td>
-  <td align="center">
-   <ul>
-       <li>Core Bank 데이터셋 구성 및 서버 구축</li>
-       <li>사용자 인증</li>
-       <li>사용자 정보 CRUD</li>
-       <li>Cypress 테스트 총괄</li>
-   </ul>
-  </td>
+   <td align="center">
+    <ul style="list-style-type: none; padding: 0; margin: 0; text-align: left;">
+        <li>MSA 플랫폼 구축</li>
+        <li>원 클릭 간편장부, 급여명세서 발급</li>
+        <li>ECS 활용 서버 배포</li>
+        <li>CDC 구축</li>
+        <li>급여 자동 이체 로직 고안</li>
+    </ul>
+   </td>
+   <td align="center">기여 부</td>
+   <td align="center">
+    <ul style="list-style-type: none; padding: 0; margin: 0; text-align: left;">
+        <li>프로젝트 기획</li>
+        <li>CORE BANKING 구축</li>
+        <li>외부 API 통신</li>
+    </ul>
+   </td>
+   <td align="center">
+    <ul style="list-style-type: none; padding: 0; margin: 0; text-align: left;">
+        <li>서비스 기획</li>
+        <li>매/지출 그래프 시각화</li>
+        <li>급여 자동 이체</li>
+        <li>사용자 인증 로직</li>
+    </ul>
+   </td>
+   <td align="center">
+    <ul style="list-style-type: none; padding: 0; margin: 0; text-align: left;">
+        <li>사용자 인증/인가</li>
+        <li>급여 자동 이체 총괄</li>
+        <li>자동 급여명세서 발급</li>
+        <li>BE CI/CD 파이프라인 구축</li>
+    </ul>
+   </td>
+   <td align="center">
+    <ul style="list-style-type: none; padding: 0; margin: 0; text-align: left;">
+        <li>Core Bank 데이터셋 구성 및 서버 구축</li>
+        <li>사용자 인증</li>
+        <li>사용자 정보 CRUD</li>
+        <li>Cypress 테스트 총괄</li>
+    </ul>
+   </td>
  </tr>
 </table>
 <br>
