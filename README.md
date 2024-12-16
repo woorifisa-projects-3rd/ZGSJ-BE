@@ -148,7 +148,7 @@ BaaS 기반 임베디드 금융 서비스입니다.
    <td align="left" style="padding: 8px;">
      • MSA 플랫폼 구축<br/>
      • 원 클릭 간편장부, 급여명세서 발급 구현<br/>
-     • ECS 활용 서버 배포<br/>
+     • ECS 활용 컨테이너 오케스트레이션 <br/>
      • CDC 구축<br/>
      • 급여 자동 이체 로직 고안
    </td>
