@@ -144,47 +144,39 @@ BaaS 기반 임베디드 금융 서비스입니다.
    <td align="center">Backend 팀장</td>
    <td align="center">Frontend 팀원<br/>Backend 팀원</td>
  </tr>
-  <tr>
-   <td align="center">
-    <ul style="list-style-type: none; padding: 0; margin: 0; text-align: left;">
-        <li>MSA 플랫폼 구축</li>
-        <li>원 클릭 간편장부, 급여명세서 발급 구현</li>
-        <li>ECS 활용 서버 배포</li>
-        <li>CDC 구축</li>
-        <li>급여 자동 이체 로직 고안</li>
-    </ul>
+ <tr>
+   <td align="left" style="padding: 8px;">
+     • MSA 플랫폼 구축<br/>
+     • 원 클릭 간편장부, 급여명세서 발급 구현<br/>
+     • ECS 활용 서버 배포<br/>
+     • CDC 구축<br/>
+     • 급여 자동 이체 로직 고안
    </td>
-   <td align="center">기여 부</td>
-   <td align="center">
-    <ul style="list-style-type: none; padding: 0; margin: 0; text-align: left;">
-        <li>프로젝트 기획</li>
-        <li>CORE BANKING 구축</li>
-        <li>외부 API 통신</li>
-    </ul>
+   <td align="left" style="padding: 8px;">
+     기여 부
    </td>
-   <td align="center">
-    <ul style="list-style-type: none; padding: 0; margin: 0; text-align: left;">
-        <li>서비스 기획</li>
-        <li>매/지출 그래프 시각화</li>
-        <li>급여 자동 이체</li>
-        <li>사용자 인증 로직</li>
-    </ul>
+   <td align="left" style="padding: 8px;">
+     • 프로젝트 기획<br/>
+     • CORE BANKING 구축<br/>
+     • 외부 API 통신
    </td>
-   <td align="center">
-    <ul style="list-style-type: none; padding: 0; margin: 0; text-align: left;">
-        <li>사용자 인증/인가</li>
-        <li>급여 자동 이체 총괄</li>
-        <li>자동 급여명세서 발급</li>
-        <li>BE CI/CD 파이프라인 구축</li>
-    </ul>
+   <td align="left" style="padding: 8px;">
+     • 서비스 기획<br/>
+     • 매/지출 그래프 시각화<br/>
+     • 급여 자동 이체<br/>
+     • 사용자 인증 로직
    </td>
-   <td align="center">
-    <ul style="list-style-type: none; padding: 0; margin: 0; text-align: left;">
-        <li>Core Bank 데이터셋 구성 및 서버 구축</li>
-        <li>사용자 인증</li>
-        <li>사용자 정보 CRUD</li>
-        <li>Cypress 테스트 총괄</li>
-    </ul>
+   <td align="left" style="padding: 8px;">
+     • 사용자 인증/인가<br/>
+     • 급여 자동 이체 총괄<br/>
+     • 자동 급여명세서 발급<br/>
+     • BE CI/CD 파이프라인 구축
+   </td>
+   <td align="left" style="padding: 8px;">
+     • Core Bank 데이터셋 구성 및 서버 구축<br/>
+     • 사용자 인증<br/>
+     • 사용자 정보 CRUD<br/>
+     • Cypress 테스트 총괄
    </td>
  </tr>
 </table>
